@@ -12,14 +12,17 @@ const Select = ({
   titleEmpty,
   label,
   type = "normal",
+  required,
 }) => {
-  const [value, setValue] = useState();
+  const [value, setValue] = useState("");
   const [collapsed, setCollapsed] = useState(true);
+
   const changeValue = (newValue) => {
-    onChange();
     setValue(newValue);
-    setCollapsed(newValue);
+    setCollapsed(true);
+    onChange(newValue);
   };
+
   return (
     <div className={`SelectContainer ${type}`} data-testid="select-testid">
       {label && <div className="label">{label}</div>}
@@ -31,7 +34,7 @@ const Select = ({
           {!collapsed && (
             <>
               {!titleEmpty && (
-                <li onClick={() => changeValue(null)}>
+                <li onClick={() => changeValue("")}>
                   <input defaultChecked={!value} name="selected" type="radio" />{" "}
                   Toutes
                 </li>
@@ -49,7 +52,7 @@ const Select = ({
             </>
           )}
         </ul>
-        <input type="hidden" value={value || ""} name={name} />
+        <input type="hidden" value={value || ""} name={name} required={required} />
         <button
           type="button"
           data-testid="collapse-button-testid"
@@ -88,6 +91,7 @@ Select.propTypes = {
   titleEmpty: PropTypes.bool,
   label: PropTypes.string,
   type: PropTypes.string,
+  required: PropTypes.bool,
 }
 
 Select.defaultProps = {
@@ -96,6 +100,7 @@ Select.defaultProps = {
   label: "",
   type: "normal",
   name: "select",
+  required: false,
 }
 
 export default Select;
