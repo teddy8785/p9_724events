@@ -12,15 +12,13 @@ const Slider = () => {
     new Date(evtB.date) - new Date(evtA.date) // Tri décroissant
   );
 
-  const nextCard = () => {
-    setTimeout(
-      () => setIndex(index < byDateDesc.length - 1 ? index + 1 : 0),
-      5000
-    );
-  };
-
   useEffect(() => {
-    const timer = nextCard();
+    const timer = setTimeout(() => {
+      setIndex((prevIndex) =>
+        prevIndex < byDateDesc.length - 1 ? prevIndex + 1 : 0
+      );
+    }, 5000);
+
     return () => clearTimeout(timer);
   }, [index, byDateDesc.length]);
 
