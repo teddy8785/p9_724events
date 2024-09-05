@@ -14,12 +14,13 @@ import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
   const { data } = useData();
-
+  // recuperer les donneées Events du fichier j.son dans l'ordre décroissant
   const Events = data?.events;
   const last = Events?.sort((evtA, evtB) =>
     new Date(evtA.date) > new Date(evtB.date) ? -1 : 1
   )[0];
 
+  // si last est défini, affiche le composant eventCard
   return <>
     <header>
       <Menu />
@@ -126,7 +127,7 @@ const Page = () => {
           <EventCard
             imageSrc={last?.cover}
             title={last?.title}
-            date={new Date(last.date)}
+            date={new Date(last?.date)}
             small
             label="boom"
           />

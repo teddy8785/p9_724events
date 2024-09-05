@@ -8,10 +8,12 @@ const Slider = () => {
   const { data } = useData();
   const [index, setIndex] = useState(0);
 
+  // ajout du tableau vide
   const byDateDesc = (data?.focus || []).sort((evtA, evtB) =>
     new Date(evtB.date) - new Date(evtA.date) // Tri décroissant
   );
 
+  // timer pour le carrousel
   useEffect(() => {
     const timer = setTimeout(() => {
       setIndex((prevIndex) =>
@@ -47,7 +49,7 @@ const Slider = () => {
               type="radio"
               name="radio-button"
               checked={index === radioIdx}
-              onChange={() => setIndex(radioIdx)}
+              onChange={() => setIndex(radioIdx)} // met a jour quand on click
             />
           ))}
         </div>

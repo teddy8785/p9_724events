@@ -7,6 +7,7 @@ export const FIELD_TYPES = {
   TEXTAREA: 2,
 };
 
+// rajout de required pour rendre requis le remplissage du formulaire
 const Field = ({ type = FIELD_TYPES.INPUT_TEXT, label, name, placeholder, required }) => {
   let component;
   switch (type) {

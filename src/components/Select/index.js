@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 
 import "./style.scss";
 
+// rajout de required
 const Select = ({
   selection,
   onChange,
@@ -17,10 +18,11 @@ const Select = ({
   const [value, setValue] = useState("");
   const [collapsed, setCollapsed] = useState(true);
 
+  // rajout de newValue en argument
   const changeValue = (newValue) => {
+    onChange(newValue);
     setValue(newValue);
     setCollapsed(true);
-    onChange(newValue);
   };
 
   return (

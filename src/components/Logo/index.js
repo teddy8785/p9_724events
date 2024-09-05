@@ -2,6 +2,7 @@
 import PropTypes from "prop-types";
 import "./style.scss";
 
+// style écrit en camelCase
 const Logo = ({ size }) => (
   <div className="Logo">
     <svg

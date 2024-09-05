@@ -13,6 +13,7 @@ const Form = ({ onSuccess, onError }) => {
       evt.preventDefault();
       setSending(true);
       // We try to call mockContactApi
+      // appel de la fonction passée en props
       try {
         await mockContactApi();
         setSending(false);
