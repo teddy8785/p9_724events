@@ -11,11 +11,13 @@ const DataContext = createContext({});
 
 export const api = {
   loadData: async () => {
-    const json = await fetch("/events.json");
-    return json.json();
+    const response = await fetch(`${process.env.PUBLIC_URL}/events.json`);
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return response.json();
   },
 };
-
 export const DataProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [data, setData] = useState(null);
